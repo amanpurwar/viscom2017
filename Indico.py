@@ -16,26 +16,26 @@ for i in range(1,30):
 happy.append(tmp[u'Happy']);fear.append(tmp[u'Fear']);
 
 plt.figure(1)
-plt.plot(lx,angry, 'ro')
+plt.plot(lx,angry, 'ro', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 
-plt.figure(2)
-plt.plot(lx,sad, 'bo')
+plt.subplot(2)
+plt.plot(lx,sad, 'bo', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 
-plt.figure(3)
-plt.plot(lx,neutral, 'go')
+plt.subplot(3)
+plt.plot(lx,neutral, 'go', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 
-plt.figure(4)
-plt.plot(lx,surprise, 'yo')
+plt.subplot(4)
+plt.plot(lx,surprise, 'yo', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 
-plt.figure(5)
-plt.plot(lx,happy, 'mo')
+plt.subplot(5)
+plt.plot(lx,happy, 'mo', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 
-plt.figure(6)
-plt.plot(lx,fear, 'ko')
+plt.subplot(6)
+plt.plot(lx,fear, 'ko', linewidth=2.0)
 plt.axis([0, 30, 0, 1])
 plt.show()
