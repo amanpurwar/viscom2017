@@ -1,6 +1,30 @@
 import indicoio
 import numpy as np
 import matplotlib.pyplot as plt
+'''
+import numpy as np
+import time
+import cv2
+cap = cv2.VideoCapture('a.mp4')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
+cv2.waitKey(500);
+#time.sleep(5)
+count=1
+#print("f;akdf")
+while(cap.isOpened()):
+    ret, frame = cap.read()
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+    for (x,y,w,h) in faces:
+        cv2.rectangle(gray,(x,y),(x+w,y+h),(255,0,0),2)
+    cv2.imshow('frame',gray)
+    cv2.imwrite("imgs/face_"+str(count)+".jpg")
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cap.release()
+cv2.destroyAllWindows()
+
+'''
 indicoio.config.api_key = '929ac1b1d3eac44546d60bf0a359816a'
 
 # single example                                                                                                               
