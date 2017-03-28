@@ -2,7 +2,6 @@ import indicoio
 import numpy as np
 import matplotlib.pyplot as plt
 from time import sleep
-import operator
 
 '''
 import numpy as np
@@ -28,11 +27,12 @@ cap.release()
 cv2.destroyAllWindows()
 
 '''
+
 indicoio.config.api_key = '929ac1b1d3eac44546d60bf0a359816a'
 
 # single example                                                                                                               
 lx=[]
-angry=[];sad=[];neutral=[];surprise=[];happy=[];fear=[];max_emo=[]
+angry=[];sad=[];neutral=[];surprise=[];happy=[];fear=[];max_emo=[];emo_colour=[]
 for i in range(1,10):
         lx.append(i)
 
@@ -51,7 +51,28 @@ while (i<10):
 	happy.append(tmp[u'Happy']);fear.append(tmp[u'Fear']);
         sleep(2)
         i=i+1
-        
+        emo=max(tmp.items(), key=lambda k: k[1])
+        if(emo[0]=="Angry"):
+                emo_colour.append('r')
+                max_emo.append(emo[1])
+        elif(emo[0]=="Sad"):
+                emo_colour.append('b')
+                max_emo.append(emo[1])
+        elif(emo[0]=="Neutral"):
+                emo_colour.append('g')
+                max_emo.append(emo[1])
+        elif(emo[0]=="Surprise"):
+                emo_colour.append('y')
+                max_emo.append(emo[1])
+        elif(emo[0]=="Happy"):
+                emo_colour.append('m')
+                max_emo.append(emo[1])
+        elif(emo[0]=="Fear"):
+                emo_colour.append('k')
+                max_emo.append(emo[1])
+
+print max_emo
+print emo_colour
 plt.figure(1)
 ax=plt.subplot(221)
 ax.set_title("angry")
@@ -85,6 +106,6 @@ plt.plot(lx,fear, 'ko-', linewidth=2.0)
 plt.axis([0, 10, 0, 1])
 
 plt.figure(3)
-plt.scatter([1,2,3],[4,5,6],color=['r','g','b'])
+plt.scatter(lx,max_emo,color=emo_colour)
 
 plt.show()
