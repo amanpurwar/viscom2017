@@ -1,6 +1,9 @@
 import indicoio
 import numpy as np
 import matplotlib.pyplot as plt
+from time import sleep
+import operator
+
 '''
 import numpy as np
 import time
@@ -29,16 +32,26 @@ indicoio.config.api_key = '929ac1b1d3eac44546d60bf0a359816a'
 
 # single example                                                                                                               
 lx=[]
-angry=[];sad=[];neutral=[];surprise=[];happy=[];fear=[];
+angry=[];sad=[];neutral=[];surprise=[];happy=[];fear=[];max_emo=[]
 for i in range(1,10):
         lx.append(i)
-for i in range(1,10):
+
+i=1
+#for i in range(1,10):
+while (i<10):
         print("example("+str(i)+")")
-        tmp = indicoio.fer("imgs/face_"+str(i)+".jpg")
+        try:
+                tmp = indicoio.fer("imgs/face_"+str(i)+".jpg")
+        except:
+                print("connection refused")
+                sleep(2)
+                continue
         print(tmp)
 	angry.append(tmp[u'Angry']);sad.append(tmp[u'Sad']);neutral.append(tmp[u'Neutral']);surprise.append(tmp[u'Surprise']);
 	happy.append(tmp[u'Happy']);fear.append(tmp[u'Fear']);
-
+        sleep(2)
+        i=i+1
+        
 plt.figure(1)
 ax=plt.subplot(221)
 ax.set_title("angry")
@@ -70,4 +83,8 @@ ax=plt.subplot(222)
 ax.set_title("fear")
 plt.plot(lx,fear, 'ko-', linewidth=2.0)
 plt.axis([0, 10, 0, 1])
+
+plt.figure(3)
+plt.scatter([1,2,3],[4,5,6],color=['r','g','b'])
+
 plt.show()
