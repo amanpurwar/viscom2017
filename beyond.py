@@ -13,4 +13,4 @@ def getAnalysis(API_Key,WavPath):
 
 
 json = getAnalysis("96828e31-dfe9-400f-904b-8d6cb5836c87","/home/amanpurwar/cry.wav")
-print(json)
+print(json['result']['analysisSegments'])
